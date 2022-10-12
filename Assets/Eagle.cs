@@ -42,7 +42,7 @@ public class Eagle : MonoBehaviour
         Transform wing = transform.GetChild(1);
         Transform wing2 = transform.GetChild(2);
         Transform tails = transform.GetChild(3);
-        Debug.Log(tails.name);
+        // Debug.Log(tails.name);
         wing.DORotate(new Vector3(30, 90, 0), 0.2f).SetLoops(-1, LoopType.Yoyo);
         wing2.DORotate(new Vector3(-30, 90, 0), 0.2f).SetLoops(-1, LoopType.Yoyo);
         tails.DORotateQuaternion(Quaternion.Euler(20, 180, 0), 0.2f).SetLoops(-1, LoopType.Yoyo);

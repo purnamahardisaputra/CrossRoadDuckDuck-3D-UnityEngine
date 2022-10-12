@@ -634,7 +634,7 @@ MonoBehaviour:
   road: {fileID: 1955278021756047072, guid: ac7a9e95931a14f4db9d017002c6dcad, type: 3}
   player: {fileID: 157422137}
   extent: 5
-  frontDistance: 20
+  frontDistance: 10
   backDistance: -5
   maxSameTerrainRepeat: 3
   gameOverPanel: {fileID: 1553963376}
@@ -666,8 +666,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eaglePrefab: {fileID: 6387961848711945025, guid: fd4ab6af935644d4db9b5a1e8b037d3f, type: 3}
-  spawnZPos: 7
+  spawnZPos: 10
   player: {fileID: 157422137}
+  timeOut: 10
 --- !u!1 &1385640949
 GameObject:
   m_ObjectHideFlags: 0

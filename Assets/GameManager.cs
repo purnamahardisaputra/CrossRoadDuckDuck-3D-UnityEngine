@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
         for (int z = 1; z <= frontDistance; z++)
         {
             var prefab = GetNextRandomTerrainPrefab(z);
+
             // instantiate bloknya
             CreateTerrain(prefab, z);
         }
@@ -63,9 +64,13 @@ public class GameManager : MonoBehaviour
 
         playerLastMaxTravel = player.MaxTravel;
 
-        //bikin kedepan
+        var posisiBebek = player.transform.position; ;
+
+        //bikin kedepan - cara 1
         var randTbPrefab = GetNextRandomTerrainPrefab(player.MaxTravel + frontDistance);
         CreateTerrain(randTbPrefab, player.MaxTravel + frontDistance);
+
+
         //hapus yang dibelakang
         var lastTB = map[player.MaxTravel - 1 + backDistance];
 
@@ -82,7 +87,6 @@ public class GameManager : MonoBehaviour
 
         //hapus dari daftar
         map.Remove(player.MaxTravel - 1 + backDistance);
-
         //hilangkan dari scenes
         Destroy(lastTB.gameObject);
 
