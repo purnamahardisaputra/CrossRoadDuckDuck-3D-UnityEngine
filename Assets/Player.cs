@@ -15,10 +15,10 @@ public class Player : MonoBehaviour
     private float rightBoundary;
     private float leftBoundary;
     private float backBoundary;
-    [SerializeField] private int currentTravel;
-    public int CurrentTravel { get => maxTravel; }
     [SerializeField] private int maxTravel;
-    public int MaxTravel { get => currentTravel; }
+    public int MaxTravel { get => maxTravel; }
+    [SerializeField] private int currentTravel;
+    public int CurrentTravel { get => CurrentTravel; }
 
     public bool IsDie { get => this.enabled == false; }
 
