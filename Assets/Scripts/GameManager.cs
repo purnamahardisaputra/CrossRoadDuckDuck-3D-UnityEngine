@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] int backDistance = -5;
     [SerializeField] int maxSameTerrainRepeat = 3;
     [SerializeField] GameObject gameOverPanel;
+    [SerializeField] TMP_Text highScore;
 
     // int maxZPos;
 
@@ -58,6 +59,8 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        Score();
+        highScore.text = "HIGH SCORE : " + PlayerPrefs.GetInt("HighScore", 0);
         // cek player masih hidup
         if (player.IsDie && gameOverPanel.activeInHierarchy == false)
             StartCoroutine(ShowGameOverPanel());
@@ -96,8 +99,6 @@ public class GameManager : MonoBehaviour
 
         // setup lagi supaya player ga bisa gerak ke belakang
         player.SetUp(player.MaxTravel + backDistance, extent);
-
-
     }
 
     IEnumerator ShowGameOverPanel()
@@ -155,4 +156,10 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
     }
 
+    public void Score(){
+        if(player.MaxTravel > PlayerPrefs.GetInt("HighScore", 0)){
+            PlayerPrefs.SetInt("HighScore", player.MaxTravel);
+        }
+        PlayerPrefs.Save();
+    }
 }

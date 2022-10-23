@@ -176,5 +176,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   treePrefab: {fileID: 1314434206718778894, guid: 76e373cca158f7246a7161e3f70f0562, type: 3}
+  treePrefab2: {fileID: 1314434206718778894, guid: 1c6fb5f6159ea524eb5a62824153a3f7, type: 3}
   terrain: {fileID: 4878977460398373348}
-  count: 3
+  count: 5

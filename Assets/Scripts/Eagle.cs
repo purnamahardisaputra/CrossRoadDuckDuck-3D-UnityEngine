@@ -1,11 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Globalization;
-using System.Runtime.InteropServices;
 using DG.Tweening;
-using UnityEditor.Animations;
 using UnityEngine;
-using UnityEngine.Assertions.Must;
 
 public class Eagle : MonoBehaviour
 {

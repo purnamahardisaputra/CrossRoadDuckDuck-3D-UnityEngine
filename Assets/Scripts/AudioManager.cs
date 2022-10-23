@@ -1,19 +1,21 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Palmmedia.ReportGenerator.Core;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class AudioManager : MonoBehaviour
 {
     [SerializeField] AudioMixer audioMixer;
+    [SerializeField] TMP_Dropdown dropdown;
     [SerializeField] Slider masterSlider;
     [SerializeField] Slider BGMSlider;
+    [SerializeField] Toggle muteToggle;
     [SerializeField] Slider SFXSlider;
-    public static AudioManager Instance { get; set; }
     private void Awake() {
         float db;
         if(audioMixer.GetFloat("VolumeAll", out db))
@@ -24,6 +26,15 @@ public class AudioManager : MonoBehaviour
 
         if(audioMixer.GetFloat("SFXVol", out db))
             SFXSlider.value = (db+80)/80;
+
+        dropdown.value = QualitySettings.GetQualityLevel();
+
+        if(PlayerPrefs.GetInt("Mute", 0) == 1)
+            muteToggle.isOn = true;
+        else
+            muteToggle.isOn = false;
+
+        
     }
 
     public void SceneLoader(string sceneName) {
@@ -35,6 +46,18 @@ public class AudioManager : MonoBehaviour
 
     public void QuitGame() {
         Application.Quit();
+    }
+
+    public void muteToggleChanged() {
+        if(muteToggle.isOn) {
+            PlayerPrefs.SetInt("Mute", 1);
+            AudioListener.pause = true;
+        }
+        else {
+            PlayerPrefs.SetInt("Mute", 0);
+            AudioListener.pause = false;
+        }
+        PlayerPrefs.Save();
     }
 
 
@@ -59,8 +82,5 @@ public class AudioManager : MonoBehaviour
         PlayerPrefs.SetFloat("SFXVol", volume);
         PlayerPrefs.Save();
     }
-
-
-
 
 }

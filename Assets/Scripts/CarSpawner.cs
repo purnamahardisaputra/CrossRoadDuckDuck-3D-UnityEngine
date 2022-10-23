@@ -5,6 +5,8 @@ using UnityEngine;
 public class CarSpawner : MonoBehaviour
 {
     [SerializeField] GameObject carPrefab;
+    [SerializeField] GameObject carPrefab2;
+    [SerializeField] GameObject carPrefab3;
     [SerializeField] TerrainBlock terrain;
     [SerializeField] float minSpawnDuration = 2;
     [SerializeField] float maxSpawnDuration = 4;
@@ -16,6 +18,17 @@ public class CarSpawner : MonoBehaviour
         isRight = Random.value > 0.5f ? true : false;
         timer = Random.Range(minSpawnDuration, maxSpawnDuration);
     }
+
+    GameObject GetRandomCar()
+    {
+        if (Random.value > 0.33f)
+            return carPrefab;
+        else if (Random.value > 0.33f)
+            return carPrefab2;
+        else
+            return carPrefab3;
+    }
+    
     private void Update()
     {
         if (timer > 0)
@@ -28,7 +41,7 @@ public class CarSpawner : MonoBehaviour
         var spawnPos = this.transform.position + Vector3.right * (isRight ? -(terrain.Extent + 1) : terrain.Extent + 1);
 
         var go = Instantiate(
-                original: carPrefab,
+                original: GetRandomCar(),
                 position: spawnPos,
                 rotation: Quaternion.Euler(0, isRight ? 90 : -90, 0),
                 parent: this.transform);

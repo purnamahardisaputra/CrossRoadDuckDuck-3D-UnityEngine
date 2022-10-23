@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -148,5 +149,7 @@ public class Player : MonoBehaviour
     {
         // diexecute sekali [ada frame ketika tidak nempel
     }
+
+    
 
 }

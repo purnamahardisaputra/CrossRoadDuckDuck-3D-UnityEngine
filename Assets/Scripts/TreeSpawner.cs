@@ -5,8 +5,17 @@ using UnityEngine;
 public class TreeSpawner : MonoBehaviour
 {
     [SerializeField] GameObject treePrefab;
+    [SerializeField] GameObject treePrefab2;
     [SerializeField] TerrainBlock terrain;
     [SerializeField] int count = 3;
+
+    GameObject getTree()
+    {
+        if (Random.value > 0.5f)
+            return treePrefab;
+        else
+            return treePrefab2;
+    }
 
     private void Start()
     {
@@ -24,19 +33,19 @@ public class TreeSpawner : MonoBehaviour
             var index = Random.Range(0, emptyPos.Count);
             var spawnPos = emptyPos[index];
             Instantiate(
-                treePrefab,
+                getTree(),
                 spawnPos,
                 Quaternion.identity,
                 this.transform);
             emptyPos.RemoveAt(index);
         }
         Instantiate(
-            treePrefab,
+            getTree(),
             transform.position + Vector3.right * -(terrain.Extent + 1),
             Quaternion.identity,
             this.transform);
         Instantiate(
-            treePrefab,
+            getTree(),
             transform.position + Vector3.right * (terrain.Extent + 1),
             Quaternion.identity,
             this.transform);
